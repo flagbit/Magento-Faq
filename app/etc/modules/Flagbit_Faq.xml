@@ -1,0 +1,8 @@
+<config>                                                                                                             
+        <modules>                                                                                                    
+                <Flagbit_Faq>                                                                                
+                        <active>true</active>                                                                        
+                        <codePool>local</codePool>                                                                   
+                </Flagbit_Faq>                                                                               
+        </modules>                                                                                                   
+</config>
