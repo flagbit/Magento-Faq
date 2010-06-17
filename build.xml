@@ -1,0 +1,18 @@
+<project name="Flagbit_Faq"  basedir=".">
+	
+	<property file="build.properties"/>
+	<property file="build.default.properties"/>
+	
+	<property name="srcdir" value="${basedir}/src"/>
+	<property name="builddir" value="${basedir}/build"/>
+	
+	<target name="package" description="Creates a PEAR package">
+		<copy file="${basedir}/package.xml" tofile="${srcdir}/package.xml"/>
+		<exec dir="${srcdir}" executable="${pear}">
+			<arg value="mage-package"/>
+		</exec>
+		<delete file="${srcdir}/package.xml"/>
+		<move file="${srcdir}/${ant.project.name}-${package.version}.tgz" todir="${builddir}"/>
+	</target>
+	
+</project>

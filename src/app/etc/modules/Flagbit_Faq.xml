@@ -1,8 +1,9 @@
-<config>                                                                                                             
-        <modules>                                                                                                    
-                <Flagbit_Faq>                                                                                
-                        <active>true</active>                                                                        
-                        <codePool>local</codePool>                                                                   
-                </Flagbit_Faq>                                                                               
-        </modules>                                                                                                   
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Flagbit_Faq>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Flagbit_Faq>
+	</modules>
 </config>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
+	xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd
+		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+
+	<name>Flagbit_Faq</name>
+	<channel>connect.flagbit.com</channel>
+	<summary>A FAQ module.</summary>
+	<description>A FAQ module.</description>
+	<lead>
+		<name><![CDATA[Flagbit GmbH & Co. KG]]></name>
+		<user>df</user>
+		<email>fuhr@flagbit.de</email>
+		<active>yes</active>
+	</lead>
+	<date>2010-06-17</date>
+	<time>09:27:32</time>
+	<version>
+		<release>1.0.0</release>
+		<api>1.0.0</api>
+	</version>
+	<stability>
+		<release>stable</release>
+		<api>stable</api>
+	</stability>
+	<license uri="http://www.opensource.org/licenses/osl-3.0.php">OSL 3.0</license>
+	<notes>
+* Initial Release
+	</notes>
+	<contents>
+		<dir name="/">
+			<dir name="Flagbit">
+				<dir name="Faq">
+					<dir name="Block">
+						<dir name="Admin">
+							<dir name="Edit">
+								<dir name="Tab">
+									<file name="Main.php" role="magecommunity" />
+								</dir>
+								<file name="Form.php" role="magecommunity" />
+								<file name="Tabs.php" role="magecommunity" />
+							</dir>
+							<dir name="List">
+								<file name="Grid.php" role="magecommunity" />
+							</dir>
+							<file name="Edit.php" role="magecommunity" />
+							<file name="List.php" role="magecommunity" />
+						</dir>
+						<dir name="Frontend">
+							<file name="Detail.php" role="magecommunity"/>
+							<file name="list.php" role="magecommunity" />
+						</dir>
+					</dir>
+					<dir name="controllers">
+						<file name="AdminController.php" role="magecommunity"/>
+						<file name="IndexController.php" role="magecommunity"/>
+					</dir>
+					<dir name="etc">
+						<file name="config.xml" role="magecommunity" />
+					</dir>
+					<dir name="Helper">
+						<file name="Data.php" role="magecommunity" />
+						<file name="Jumplist.php" role="magecommunity" />
+						<file name="JumplistItem.php" role="magecommunity" />
+					</dir>
+					<dir name="Model">
+						<dir name="Mysql4">
+							<dir name="Faq">
+								<file name="Collection.php" role="magecommunity" />
+							</dir>
+							<file name="Faq.php" role="magecommunity" />
+						</dir>
+						<file name="Faq.php" role="magecommunity" />
+					</dir>
+					<dir name="sql">
+						<dir name="faq_setup">
+							<file name="mysql4-install-0.1.0.php" role="magecommunity" />
+						</dir>
+					</dir>
+				</dir>
+			</dir>
+			<dir name="modules">
+				<file name="Flagbit_Faq.xml" role="mageetc" />
+			</dir>
+			<dir name="frontend">
+				<dir name="base">
+					<dir name="default">
+						<dir name="layout">
+							<file name="faq.xml" role="magedesign" />
+						</dir>
+						<dir name="template">
+							<dir name="faq">
+								<file name="detail.phtml" role="magedesign" />
+								<file name="list.phtml" role="magedesign" />
+							</dir>
+						</dir>
+					</dir>
+				</dir>
+				<dir name="default">
+					<dir name="default">
+						<dir name="layout">
+							<file name="faq.xml" role="magedesign" />
+						</dir>
+						<dir name="template">
+							<dir name="faq">
+								<file name="detail.phtml" role="magedesign" />
+								<file name="list.phtml" role="magedesign" />
+							</dir>
+						</dir>
+					</dir>
+				</dir>
+			</dir>
+			<dir name="de_DE">
+				<file name="Flagbit_Faq.csv" role="magelocale" />
+			</dir>
+		</dir>
+	</contents>
+	<dependencies>
+		<required>
+			<php>
+				<min>5.2.0</min>
+			</php>
+			<pearinstaller>
+				<min>1.6.2</min>
+			</pearinstaller>
+		</required>
+	</dependencies>
+	<phprelease />
+</package>
