@@ -27,14 +27,17 @@ class Flagbit_Faq_Block_Admin_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 		$this->setDestElementId('edit_form');
 		$this->setTitle(Mage :: helper('faq')->__('FAQ item information'));
 	}
-
 	
 	/**
-	 * Adding Tabs to left side menu
-	 *
-	 * @return Flagbit_Faq_Block_Admin_Edit_Tabs Self
+	 * Prepares the page layout
+	 * 
+	 * Adds the tabs to the left tab menu.
+	 * 
+	 * @return Flagbit_Faq_Block_Admin_Edit
 	 */
-	protected function _beforeToHtml() {
+	protected function _prepareLayout()
+	{
+		$return = parent::_prepareLayout();
 
 		$this->addTab('main_section', 
 				array (
@@ -43,7 +46,6 @@ class Flagbit_Faq_Block_Admin_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 						'content' => $this->getLayout()->createBlock('faq/admin_edit_tab_main')->toHtml(), 
 						'active' => true ));
 		
-		return parent :: _beforeToHtml();
+		return $return;
 	}
-
 }

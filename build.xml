@@ -1,4 +1,4 @@
-<project name="Flagbit_Faq"  basedir=".">
+<project name="Flagbit_Faq" default="deploy" basedir=".">
 	
 	<property file="build.properties"/>
 	<property file="build.default.properties"/>
@@ -13,6 +13,16 @@
 		</exec>
 		<delete file="${srcdir}/package.xml"/>
 		<move file="${srcdir}/${ant.project.name}-${package.version}.tgz" todir="${builddir}"/>
+	</target>
+	
+	<target name="deploy">
+		<copy todir="${deploydir}" overwrite="yes" verbose="yes">
+			<fileset dir="${srcdir}">
+				<include name="**/*"/>
+				<exclude name="**/.svn/**"/>
+				<exclude name="var/log/**"/>
+			</fileset>
+		</copy>
 	</target>
 	
 </project>

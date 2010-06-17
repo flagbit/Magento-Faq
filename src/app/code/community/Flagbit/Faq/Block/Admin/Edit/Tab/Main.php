@@ -16,6 +16,22 @@
  */
 class Flagbit_Faq_Block_Admin_Edit_Tab_Main extends Mage_Adminhtml_Block_Widget_Form {
 
+	
+	/**
+	 * Prepares the page layout
+	 * 
+	 * Loads the WYSIWYG editor on demand if enabled.
+	 * 
+	 * @return Flagbit_Faq_Block_Admin_Edit
+	 */
+	protected function _prepareLayout() {
+		$return = parent::_prepareLayout();
+		if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+			$this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+		}
+		return $return;
+	}
+	
 	/**
 	 * Preparation of current form
 	 *
@@ -72,14 +88,13 @@ class Flagbit_Faq_Block_Admin_Edit_Tab_Main extends Mage_Adminhtml_Block_Widget_
 								'1' => Mage :: helper('faq')->__('Enabled'), 
 								'0' => Mage :: helper('faq')->__('Disabled') ) ));
 		
-		
 		$fieldset->addField('answer', 'editor', 
 				array (
 						'name' => 'answer', 
 						'label' => Mage :: helper('faq')->__('Content'), 
 						'title' => Mage :: helper('faq')->__('Content'), 
-						'style' => 'height:36em;', 
-						'wysiwyg' => true, 
+						'style' => 'height:36em;',
+						'config'	=> Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
 						'required' => true ));
 		
 		$fieldset->addField('answer_html', 'select', 

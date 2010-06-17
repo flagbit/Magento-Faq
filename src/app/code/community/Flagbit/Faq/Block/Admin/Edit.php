@@ -32,25 +32,16 @@ class Flagbit_Faq_Block_Admin_Edit extends Mage_Adminhtml_Block_Widget_Form_Cont
 		$this->_updateButton('delete', 'label', Mage :: helper('faq')->__('Delete FAQ item'));
 		
 		$this->_addButton('saveandcontinue', array (
-				'label' => Mage :: helper('adminhtml')->__('Save and continue edit'), 
+				'label' => Mage :: helper('faq')->__('Save and continue edit'), 
 				'onclick' => 'saveAndContinueEdit()', 
 				'class' => 'save' ), -100);
 		
 		$this->_formScripts[] = "
-            function toggleEditor() {
-                if (tinyMCE.getInstanceById('page_content') == null) {
-                    tinyMCE.execCommand('mceAddControl', false, 'page_content');
-                } else {
-                    tinyMCE.execCommand('mceRemoveControl', false, 'page_content');
-                }
-            }
-
             function saveAndContinueEdit(){
                 editForm.submit($('edit_form').action+'back/edit/');
             }
         ";
 	}
-
 	
 	/**
 	 * Helper function to edit the header of the current form
