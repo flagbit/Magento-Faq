@@ -6,7 +6,12 @@
 	<property name="srcdir" value="${basedir}/src"/>
 	<property name="builddir" value="${basedir}/build"/>
 	
-	<target name="package" description="Creates a PEAR package">
+	<target name="prepare">
+		<replaceregexp file="${srcdir}/app/code/community/Flagbit/Faq/etc/config.xml"
+			match="(&lt;version&gt;)(.*)(&lt;/version&gt;)" replace="\1${package.version}\3"/>
+	</target>
+	
+	<target name="package" depends="prepare" description="Creates a PEAR package">
 		<copy file="${basedir}/package.xml" tofile="${srcdir}/package.xml"/>
 		<exec dir="${srcdir}" executable="${pear}">
 			<arg value="mage-package"/>
@@ -15,7 +20,7 @@
 		<move file="${srcdir}/${ant.project.name}-${package.version}.tgz" todir="${builddir}"/>
 	</target>
 	
-	<target name="deploy">
+	<target name="deploy" depends="prepare">
 		<copy todir="${deploydir}" overwrite="yes" verbose="yes">
 			<fileset dir="${srcdir}">
 				<include name="**/*"/>

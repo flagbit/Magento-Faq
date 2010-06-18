@@ -5,20 +5,20 @@
 		http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
 
 	<name>Flagbit_Faq</name>
-	<channel>connect.flagbit.com</channel>
+	<channel>connect.magentocommerce.com/community</channel>
 	<summary>A FAQ module.</summary>
 	<description>A FAQ module.</description>
 	<lead>
 		<name><![CDATA[Flagbit GmbH & Co. KG]]></name>
-		<user>df</user>
-		<email>fuhr@flagbit.de</email>
+		<user>flagbit</user>
+		<email>magento@flagbit.de</email>
 		<active>yes</active>
 	</lead>
 	<date>2010-06-17</date>
 	<time>13:27:32</time>
 	<version>
-		<release>1.0.1</release>
-		<api>1.0.1</api>
+		<release>1.0.3</release>
+		<api>1.0.3</api>
 	</version>
 	<stability>
 		<release>stable</release>
@@ -97,19 +97,6 @@
 						</dir>
 					</dir>
 				</dir>
-				<dir name="default">
-					<dir name="default">
-						<dir name="layout">
-							<file name="faq.xml" role="magedesign" />
-						</dir>
-						<dir name="template">
-							<dir name="faq">
-								<file name="detail.phtml" role="magedesign" />
-								<file name="list.phtml" role="magedesign" />
-							</dir>
-						</dir>
-					</dir>
-				</dir>
 			</dir>
 			<dir name="de_DE">
 				<file name="Flagbit_Faq.csv" role="magelocale" />
@@ -120,6 +107,7 @@
 		<required>
 			<php>
 				<min>5.2.0</min>
+				<max>6.0.0</max>
 			</php>
 			<pearinstaller>
 				<min>1.6.2</min>
