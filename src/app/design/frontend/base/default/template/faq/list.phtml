@@ -24,33 +24,33 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
-<div class="content-box">
-	<div class="content-box-content">
-		<h1><?php echo $this->__('FAQ overview'); ?></h1>
-		
-		<?php if ($this->hasFaq()): ?>
-		<ul class="faq-list">
-			<?php foreach ($this->getFaqCollection() as $faqItem): ?>
-			<li>
-				<a href="#faq-item-<?php echo $faqItem->getId() ?>">
-					<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
-				</a>
-			</li>
-			<?php endforeach; ?>
-		</ul>	
-		<dl class="faq-items">
-			<?php foreach ($this->getFaqCollection() as $faqItem): ?>
-			<dt id="faq-item-<?php echo $faqItem->getId() ?>">
-				<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
-			</dt>
-			<dd>
-				<?php echo ($faqItem->getAnswerHtml() ? $faqItem->getAnswer() : '<p>' . implode('</p><p>', explode("\n", $this->htmlEscape($faqItem->getAnswer()))) . '</p>') ?>
-			</dd>
-			<?php endforeach; ?>
-		</dl>
-		<?php else: ?>
-		<p class="faq-items"><?php echo $this->__('There are no FAQ items at the moment.') ?></p>
-		<?php endif; ?>
-	</div>
-	<div class="content-box-footer"></div>
+<div class="page-title">
+	<h1><?php echo $this->__('FAQ overview'); ?></h1>
 </div>
+		
+<?php if ($this->hasFaq()): ?>
+<h2><?php echo $this->__('Questions'); ?></h2>
+<ul class="faq-list">
+	<?php foreach ($this->getFaqCollection() as $faqItem): ?>
+	<li>
+		<a href="#faq-item-<?php echo $faqItem->getId() ?>">
+			<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
+		</a>
+	</li>
+	<?php endforeach; ?>
+</ul>
+
+<h2><?php echo $this->__('Answers'); ?></h2>
+<dl class="faq-items">
+	<?php foreach ($this->getFaqCollection() as $faqItem): ?>
+	<dt id="faq-item-<?php echo $faqItem->getId() ?>">
+		<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
+	</dt>
+	<dd>
+		<?php echo ($faqItem->getAnswerHtml() ? $faqItem->getAnswer() : '<p>' . implode('</p><p>', explode("\n", $this->htmlEscape($faqItem->getAnswer()))) . '</p>') ?>
+	</dd>
+	<?php endforeach; ?>
+</dl>
+<?php else: ?>
+<p class="faq-items"><?php echo $this->__('There are no FAQ items at the moment.') ?></p>
+<?php endif; ?>

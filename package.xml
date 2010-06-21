@@ -17,8 +17,8 @@
 	<date>2010-06-17</date>
 	<time>13:27:32</time>
 	<version>
-		<release>1.0.4</release>
-		<api>1.0.4</api>
+		<release>1.0.5</release>
+		<api>1.0.5</api>
 	</version>
 	<stability>
 		<release>stable</release>
@@ -49,7 +49,7 @@
 						</dir>
 						<dir name="Frontend">
 							<file name="Detail.php" role="magecommunity"/>
-							<file name="list.php" role="magecommunity" />
+							<file name="List.php" role="magecommunity" />
 						</dir>
 					</dir>
 					<dir name="controllers">
@@ -57,6 +57,7 @@
 						<file name="IndexController.php" role="magecommunity"/>
 					</dir>
 					<dir name="etc">
+						<file name="adminhtml.xml" role="magecommunity" />
 						<file name="config.xml" role="magecommunity" />
 					</dir>
 					<dir name="Helper">

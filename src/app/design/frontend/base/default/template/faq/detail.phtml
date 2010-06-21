@@ -1,9 +1,11 @@
 <?php $_faq = $this->getFaq() ?>
 
-<div class="faq-detail">
 <?php if ($_faq): ?>
+<div class="page-title">
 	<h1><?php echo $this->htmlEscape($_faq->getQuestion()) ?></h1>
+</div>
 
+<div class="faq-detail">
 	<p class="faq-date">
 		<?php echo Mage :: getModel('core/date')->date('d.m.Y', $_faq->getPublicationTime()); ?>
 	</p>
@@ -22,8 +24,11 @@
 	<?php endif; ?>
 	
 	<p><a href="<?php echo Mage :: app()->getStore()->getUrl('faq') ?>" title="<?php echo $this->__('Back to the FAQ overview') ?>"><?php echo $this->__('Back to the FAQ overview') ?></a></p>
-<?php else: ?>
-	<h1><?php echo $this->__('Error') ?></h1>
-	<p><?php echo $this->__('The requested FAQ item could not be found!') ?></p>
-<?php endif; ?>
 </div>
+<?php else: ?>
+<div class="page-title">
+	<h1><?php echo $this->__('Error') ?></h1>
+</div>
+	
+<p><?php echo $this->__('The requested FAQ item could not be found!') ?></p>
+<?php endif; ?>
