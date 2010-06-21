@@ -3,7 +3,7 @@
  * FAQ for Magento
  *
  * @category   Flagbit
- * @package    Flagbit_FAQ
+ * @package    Flagbit_Faq
  * @copyright  Copyright (c) 2009 Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
 

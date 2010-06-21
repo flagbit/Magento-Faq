@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menu>
+		<cms>
+			<children>
+				<faq translate="title" module="faq">
+					<title>FAQ</title>
+					<action>adminhtml/faq</action>
+					<sort_order>60</sort_order>
+				</faq>
+			</children>
+		</cms>
+	</menu>
+	<!--
+	<acl>
+		<resources>
+			<admin>
+				<children>
+					<cms>
+						<children>
+							<faq translate="title" module="faq"> 
+								<title>Faq</title>
+								<sort_order>50</sort_order>
+							</faq>
+						</children>
+					</cms>
+				</children>
+			</admin>
+		</resources>
+	</acl>
+	-->
+</config>

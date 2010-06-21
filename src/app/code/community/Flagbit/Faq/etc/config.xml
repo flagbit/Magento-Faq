@@ -4,7 +4,7 @@
 		<Flagbit_Faq>
 			<active>true</active>
 			<codePool>community</codePool>
-			<version>1.0.3</version>
+			<version>1.0.4</version>
 		</Flagbit_Faq>
 	</modules>
 	
@@ -21,6 +21,15 @@
 	</admin>
 
 	<frontend>
+		<routers>
+			<faq>
+				<use>standard</use>
+				<args>
+					<module>Flagbit_Faq</module>
+					<frontName>faq</frontName>
+				</args>
+			</faq>
+		</routers>
 		<translate>
 			<modules>
 				<Flagbit_Faq>
@@ -96,21 +105,10 @@
 				<from><![CDATA[#^/{adminhtml}/faq/#]]></from>
 				<to>/faq/admin/</to>
 			</Flagbit_Faq>
-		</rewrite>		
+		</rewrite>
 	</global>
 
 	<adminhtml>
-		<menu>
-			<cms>
-				<children>
-					<faq translate="title" module="faq">
-						<title>FAQ</title>
-						<action>adminhtml/faq</action>
-						<sort_order>60</sort_order>
-					</faq>
-				</children>
-			</cms>
-		</menu>
 		<translate>
 			<modules>
 				<Flagbit_Faq>
@@ -120,24 +118,6 @@
 				</Flagbit_Faq>
 			</modules>
 		</translate>
-		<!--
-		<acl>
-			<resources>
-				<admin>
-					<children>
-						<cms>
-							<children>
-								<faq translate="title" module="faq"> 
-									<title>Faq</title>
-									<sort_order>50</sort_order>
-								</faq>
-							</children>
-						</cms>
-					</children>
-				</admin>
-			</resources>
-		</acl>
-		-->
 	</adminhtml>
 	<install>
 		<translate>

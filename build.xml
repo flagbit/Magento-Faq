@@ -5,6 +5,7 @@
 	
 	<property name="srcdir" value="${basedir}/src"/>
 	<property name="builddir" value="${basedir}/build"/>
+	<property name="docdir" value="${basedir}/doc"/>
 	
 	<target name="prepare">
 		<replaceregexp file="${srcdir}/app/code/community/Flagbit/Faq/etc/config.xml"
@@ -28,6 +29,24 @@
 				<exclude name="var/log/**"/>
 			</fileset>
 		</copy>
+	</target>
+	
+	<target name="phpdoc" description="Generates the documentation">
+		<delete dir="${docdir}" />
+		<exec executable="${php}" dir="${srcdir}/app">
+			<arg value="${phpdoc}" />
+			<arg value="-ct" />
+			<arg value="override" />
+			<arg value="-f" />
+			<arg value="*.php" />
+			<arg value="-t" />
+			<arg value="${docdir}" />
+			<arg value="-ti" />
+			<arg value="${ant.project.name}" />
+			<arg value="-s" />
+			<arg value="-o" />
+			<arg value="${phpdoc.output}" />
+		</exec>
 	</target>
 	
 </project>
