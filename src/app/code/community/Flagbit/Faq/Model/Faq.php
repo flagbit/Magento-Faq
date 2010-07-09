@@ -14,16 +14,13 @@
  * @package    Flagbit_Faq
  * @author     Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
-class Flagbit_Faq_Model_Faq extends Mage_Core_Model_Abstract {
-
-	
-	/**
-	 * Constructor
-	 *
-	 */
-	protected function _construct() {
-
-		$this->_init('faq/faq');
-	}
-	
+class Flagbit_Faq_Model_Faq extends Mage_Core_Model_Abstract
+{
+    /**
+     * Constructor
+     */
+    protected function _construct()
+    {
+        $this->_init('flagbit_faq/faq');
+    }
 }

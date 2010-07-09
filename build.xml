@@ -29,6 +29,10 @@
 	
 	<target name="package" depends="prepare" description="Creates a PEAR package">
 		<copy file="${basedir}/package.xml" tofile="${srcdir}/package.xml"/>
+		<exec dir='${srcdir}/' executable="${pear}">
+            <arg value="mpx"/>
+        </exec>
+		<copy file="${srcdir}/package.xml" tofile="${basedir}/package.xml"/>
 		<exec dir="${srcdir}" executable="${pear}">
 			<arg value="mage-package"/>
 		</exec>

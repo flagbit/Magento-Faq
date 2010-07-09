@@ -14,8 +14,8 @@
  * @package    Flagbit_Faq
  * @author     Flagbit GmbH & Co. KG <magento@flagbit.de>
  */
-class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
-	
+class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
+{
 	protected $_faqCollection;
 	
 	protected function _prepareLayout()
@@ -31,11 +31,12 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
 	 * @param int $pageSize
 	 * @return Flagbit_Faq_Model_Mysql_Faq_Collection collection of current FAQ entries
 	 */
-	public function getFaqCollection($pageSize = null) {
+	public function getFaqCollection($pageSize = null)
+	{
 		if (!$this->_faqCollection || (intval($pageSize) > 0
 			&& $this->_faqCollection->getSize() != intval($pageSize))
 		) {
-			$this->_faqCollection = Mage :: getModel('faq/faq')
+			$this->_faqCollection = Mage :: getModel('flagbit_faq/faq')
 				->getCollection()
 				->addStoreFilter(Mage :: app()->getStore())
 				->addIsActiveFilter();
@@ -48,18 +49,46 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
 		return $this->_faqCollection;
 	}
 	
+	/**
+	 * Returns all active categories
+	 * 
+	 * @return Flagbit_Faq_Model_Mysql4_Category_Collection
+	 */
+	public function getCategoryCollection()
+	{
+	    $categories = $this->getData('category_collection');
+	    if (is_null($categories)) {
+    	    $categories =  Mage::getResourceSingleton('flagbit_faq/category_collection')
+    	       ->addStoreFilter(Mage::app()->getStore())
+    	       ->addIsActiveFilter();
+    	    $this->setData('category_collection', $categories);
+	    }
+	    return $categories;
+	}
+	
+	/**
+	 * Returns the item collection for the given category 
+	 * 
+	 * @param Flagbit_Faq_Model_Category $category
+	 * @return Flagbit_Faq_Model_Mysql4_Faq_Collection
+	 */
+	public function getItemCollectionByCategory(Flagbit_Faq_Model_Category $category)
+	{
+	    return $category->getItemCollection()->addIsActiveFilter()->addStoreFilter(Mage::app()->getStore());
+	}
 	
 	/**
 	 * Simple helper function to determine, whether there are FAQ entries or not.
 	 *
 	 * @return boolean True, if FAQ are given.
 	 */
-	public function hasFaq() {
+	public function hasFaq()
+	{
 		return $this->getFaqCollection()->getSize() > 0;
 	}
 	
-	
-	public function getIntro($faqItem) {
+	public function getIntro($faqItem)
+	{
 		$_intro = strip_tags($faqItem->getContent());
 		$_intro = mb_substr($_intro, 0, mb_strpos($_intro, "\n"));
 		
@@ -75,7 +104,6 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
 		return $_intro;
 	}
 	
-	
 	/**
 	 * Returns 
 	 *
@@ -85,12 +113,11 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
 	{
 		if(is_null($this->_faqJumplist))
 		{
-			$this->_faqJumplist = Mage::helper('faq/jumplist');
+			$this->_faqJumplist = Mage::helper('flagbit_faq/jumplist');
 			$this->_faqJumplist->setFaqItems($this->getFaqCollection());
 		}
 		return $this->_faqJumplist;
 	}
-	
 	
 	/**
 	 * Simple helper function to determine, whether we should display a jumplist or not.
@@ -102,9 +129,8 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template {
 		return count($this->getFaqJumplist()) > 0;
 	}
 	
-	
-	
-	public function encodeQuestionForUrl($question) {
+	public function encodeQuestionForUrl($question)
+	{
 		return 	urlencode(
 					trim(
 						str_replace(

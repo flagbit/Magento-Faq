@@ -4,20 +4,20 @@
 		<Flagbit_Faq>
 			<active>true</active>
 			<codePool>community</codePool>
-			<version>1.0.6</version>
+			<version>1.1.0</version>
 		</Flagbit_Faq>
 	</modules>
 	
 	<admin>
-		<routers>
-			<faq>
-				<use>admin</use>
-				<args>
-					<module>Flagbit_Faq</module>
-					<frontName>faq</frontName>
-				</args>
-			</faq>
-		</routers>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Flagbit_Faq before="Mage_Adminhtml">Flagbit_Faq_Adminhtml</Flagbit_Faq>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
 	</admin>
 
 	<frontend>
@@ -50,25 +50,34 @@
 	
 	<global>
 		<helpers>
-			<faq>
+			<flagbit_faq>
 				<class>Flagbit_Faq_Helper</class>
-			</faq>
+			</flagbit_faq>
 		</helpers>
 		
 		<blocks>
-			<faq>
+			<flagbit_faq>
 				<class>Flagbit_Faq_Block</class>
-			</faq>
+			</flagbit_faq>
 		</blocks>
 		
 		<models>
-			<faq>
+			<flagbit_faq>
 				<class>Flagbit_Faq_Model</class>
-				<resourceModel>faq_mysql4</resourceModel>
-			</faq>
-			<faq_mysql4>
+				<resourceModel>flagbit_faq_mysql4</resourceModel>
+			</flagbit_faq>
+			<flagbit_faq_mysql4>
 				<class>Flagbit_Faq_Model_Mysql4</class>
 				<entities>
+					<category>
+						<table>faq_category</table>
+					</category>
+					<category_item>
+						<table>faq_category_item</table>
+					</category_item>
+                    <category_store>
+                        <table>faq_category_store</table>
+                    </category_store>
 					<faq>
 						<table>faq</table>
 					</faq>
@@ -76,7 +85,7 @@
 						<table>faq_store</table>
 					</faq_store>
 				</entities>
-			</faq_mysql4>
+			</flagbit_faq_mysql4>
 		</models>
 		
 		<resources>
@@ -99,13 +108,6 @@
 				</connection>
 			</faq_read>
 		</resources>
-		
-		<rewrite>
-			<Flagbit_Faq>
-				<from><![CDATA[#^/{adminhtml}/faq/#]]></from>
-				<to>/faq/admin/</to>
-			</Flagbit_Faq>
-		</rewrite>
 	</global>
 
 	<adminhtml>

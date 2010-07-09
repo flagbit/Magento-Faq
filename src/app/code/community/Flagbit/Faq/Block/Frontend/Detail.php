@@ -38,7 +38,7 @@ class Flagbit_Faq_Block_Frontend_Detail extends Mage_Core_Block_Template {
 		if (!$this->_faq) {
 			$id = intval($this->getRequest()->getParam('faq'));
 			try {
-				$this->_faq = Mage :: getModel('faq/faq')->load($id); 
+				$this->_faq = Mage :: getModel('flagbit_faq/faq')->load($id); 
 				
 				if ($this->_faq->getIsActive() != 1){
 					Mage::throwException('Faq Item is not active');

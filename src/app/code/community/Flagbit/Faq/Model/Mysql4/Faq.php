@@ -23,7 +23,7 @@ class Flagbit_Faq_Model_Mysql4_Faq extends Mage_Core_Model_Mysql4_Abstract {
 	 */
 	protected function _construct() {
 
-		$this->_init('faq/faq', 'faq_id');
+		$this->_init('flagbit_faq/faq', 'faq_id');
 	}
 
 
@@ -36,15 +36,16 @@ class Flagbit_Faq_Model_Mysql4_Faq extends Mage_Core_Model_Mysql4_Abstract {
 	 */
 	protected function _getLoadSelect($field, $value, $object) {
 
-		$select = parent :: _getLoadSelect($field, $value, $object);
+		$select = parent::_getLoadSelect($field, $value, $object);
 		
 		if ($object->getStoreId()) {
 			$select->join(
-				array('nns' => $this->getTable('faq/faq_store')),
+				array('nns' => $this->getTable('flagbit_faq/faq_store')),
 				$this->getMainTable() . '.item_id = `nns`.faq_id'
 			)->where('is_active=1 AND `nns`.store_id in (0, ?) ',
 			$object->getStoreId())->order('creation_time DESC')->limit(1);
 		}
+		
 		return $select;
 	}
 
@@ -76,33 +77,45 @@ class Flagbit_Faq_Model_Mysql4_Faq extends Mage_Core_Model_Mysql4_Abstract {
 	 *
 	 * @param Mage_Core_Model_Abstract $object
 	 */
-	protected function _afterSave(Mage_Core_Model_Abstract $object) {
-
+	protected function _afterSave(Mage_Core_Model_Abstract $object)
+	{
 		$condition = $this->_getWriteAdapter()->quoteInto('faq_id = ?', $object->getId());
-		$this->_getWriteAdapter()->delete($this->getTable('faq/faq_store'), $condition);
 		
+		// process faq item to store relation
+		$this->_getWriteAdapter()->delete($this->getTable('flagbit_faq/faq_store'), $condition);
 		foreach ((array) $object->getData('stores') as $store) {
 			$storeArray = array ();
 			$storeArray['faq_id'] = $object->getId();
 			$storeArray['store_id'] = $store;
 			$this->_getWriteAdapter()->insert(
-				$this->getTable('faq/faq_store'), $storeArray
+				$this->getTable('flagbit_faq/faq_store'), $storeArray
 			);
 		}
 		
-		return parent :: _afterSave($object);
+		// process faq item to category relation
+        $this->_getWriteAdapter()->delete($this->getTable('flagbit_faq/category_item'), $condition);
+        foreach ((array) $object->getData('categories') as $categoryId) {
+            $categoryArray = array ();
+            $categoryArray['faq_id'] = $object->getId();
+            $categoryArray['category_id'] = $categoryId;
+            $this->_getWriteAdapter()->insert(
+                $this->getTable('flagbit_faq/category_item'), $categoryArray
+            );
+        }
+		
+		return parent::_afterSave($object);
 	}
 
-
 	/**
-	 * Do some processing after loading (stores and images)
+	 * Do store and category processing after loading
 	 * 
 	 * @param Mage_Core_Model_Abstract $object Current faq item
 	 */
-	protected function _afterLoad(Mage_Core_Model_Abstract $object) {
-
+	protected function _afterLoad(Mage_Core_Model_Abstract $object)
+	{
+	    // process faq item to store relation
 		$select = $this->_getReadAdapter()->select()->from(
-			$this->getTable('faq/faq_store')
+			$this->getTable('flagbit_faq/faq_store')
 		)->where('faq_id = ?', $object->getId());
 		
 		if ($data = $this->_getReadAdapter()->fetchAll($select)) {
@@ -113,14 +126,19 @@ class Flagbit_Faq_Model_Mysql4_Faq extends Mage_Core_Model_Mysql4_Abstract {
 			$object->setData('store_id', $storesArray);
 		}
 		
-		$images = trim($object->getData('image'));
-		if ($images && !empty($images)) {
-			$object->setData('image', explode(',', $images));
-		}
-		else {
-			$object->setData('image', null);
-		}
-		
-		return parent :: _afterLoad($object);
+		// process faq item to category relation
+        $select = $this->_getReadAdapter()->select()->from(
+            $this->getTable('flagbit_faq/category_item')
+        )->where('faq_id = ?', $object->getId());
+        
+        if ($data = $this->_getReadAdapter()->fetchAll($select)) {
+            $categoryArray = array ();
+            foreach ($data as $row) {
+                $categoryArray[] = $row['category_id'];
+            }
+            $object->setData('category_id', $categoryArray);
+        }
+        
+		return parent::_afterLoad($object);
 	}
 }

@@ -3,10 +3,19 @@
 	<menu>
 		<cms>
 			<children>
-				<faq translate="title" module="faq">
+				<faq translate="title" module="flagbit_faq">
 					<title>FAQ</title>
-					<action>adminhtml/faq</action>
 					<sort_order>60</sort_order>
+					<children>
+                        <item translate="titl" module="flagbit_faq">
+                            <title>Manage Items</title>
+                            <action>adminhtml/faq</action>
+                        </item>
+						<category translate="titl" module="flagbit_faq">
+							<title>Manage Categories</title>
+							<action>adminhtml/faq_category</action>
+						</category>
+					</children>
 				</faq>
 			</children>
 		</cms>
@@ -18,7 +27,7 @@
 				<children>
 					<cms>
 						<children>
-							<faq translate="title" module="faq"> 
+							<faq translate="title" module="flagbit_faq"> 
 								<title>Faq</title>
 								<sort_order>50</sort_order>
 							</faq>

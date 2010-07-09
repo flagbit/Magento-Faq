@@ -23,22 +23,40 @@
  * @copyright  Copyright (c) 2009 Flagbit GmbH & Co. KG (http://www.flagbit.de)
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
+/* @var $this Flagbit_Faq_Block_Frontend_List */
 ?>
 <div class="page-title">
 	<h1><?php echo $this->__('FAQ overview'); ?></h1>
 </div>
-		
+
 <?php if ($this->hasFaq()): ?>
+
 <h2><?php echo $this->__('Questions'); ?></h2>
+<?php if ($this->getCategoryCollection()) : ?>
+<dl class="faq-list">
+    <?php foreach ($this->getCategoryCollection() as $category) : ?>
+        <dt><?php echo $this->htmlEscape($category->getName()); ?></dt><dd><ul class="faq-list">
+        <?php foreach ($this->getItemCollectionByCategory() as $item) : ?>
+            <li>
+                <a href="#faq-item-<?php echo $item->getId() ?>">
+                    <?php echo $this->htmlEscape($item->getQuestion()); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+        </ul></dd>
+    <?php endforeach; ?>
+</dl>
+<?php else : ?>
 <ul class="faq-list">
-	<?php foreach ($this->getFaqCollection() as $faqItem): ?>
-	<li>
-		<a href="#faq-item-<?php echo $faqItem->getId() ?>">
-			<?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
-		</a>
-	</li>
-	<?php endforeach; ?>
+    <?php foreach ($this->getFaqCollection() as $faqItem): ?>
+    <li>
+        <a href="#faq-item-<?php echo $faqItem->getId() ?>">
+            <?php echo $this->htmlEscape($faqItem->getQuestion()) ?>
+        </a>
+    </li>
+    <?php endforeach; ?>
 </ul>
+<?php endif; ?>
 
 <h2><?php echo $this->__('Answers'); ?></h2>
 <dl class="faq-items">
