@@ -36,7 +36,7 @@
 <dl class="faq-list">
     <?php foreach ($this->getCategoryCollection() as $category) : ?>
         <dt><?php echo $this->htmlEscape($category->getName()); ?></dt><dd><ul class="faq-list">
-        <?php foreach ($this->getItemCollectionByCategory() as $item) : ?>
+        <?php foreach ($this->getItemCollectionByCategory($category) as $item) : ?>
             <li>
                 <a href="#faq-item-<?php echo $item->getId() ?>">
                     <?php echo $this->htmlEscape($item->getQuestion()); ?>

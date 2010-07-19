@@ -13,11 +13,11 @@
   <email>magento@flagbit.de</email>
   <active>yes</active>
  </lead>
- <date>2010-07-09</date>
- <time>11:29:17</time>
+ <date>2010-07-19</date>
+ <time>10:57:59</time>
  <version>
-  <release>1.1.0</release>
-  <api>1.1.0</api>
+  <release>1.1.1</release>
+  <api>1.1.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -29,7 +29,7 @@
  </notes>
  <contents>
   <dir name="/">
-   <dir name="/de_DE">
+   <dir name="\de_DE">
     <file md5sum="289b5729e3c29b803705ba524eff0009" name="Flagbit_Faq.csv" role="magelocale" />
    </dir> <!-- //de_DE -->
    <dir name="/Flagbit/Faq/Block/Adminhtml">
@@ -73,7 +73,7 @@
    </dir> <!-- //Flagbit/Faq/controllers/Adminhtml/Faq -->
    <dir name="/Flagbit/Faq/etc">
     <file md5sum="f6fefba5d78694a568dfe6348699197d" name="adminhtml.xml" role="magecommunity" />
-    <file md5sum="6a54f138bf53287f2dd116f0f2a5adaf" name="config.xml" role="magecommunity" />
+    <file md5sum="08175ff37d4318290c5e897b35d0ecc5" name="config.xml" role="magecommunity" />
    </dir> <!-- //Flagbit/Faq/etc -->
    <dir name="/Flagbit/Faq/Helper">
     <file md5sum="c1f9eec33617fa58cdcfb57f4de76c53" name="Data.php" role="magecommunity" />
@@ -104,7 +104,7 @@
    </dir> <!-- //frontend/base/default/layout -->
    <dir name="/frontend/base/default/template/faq">
     <file md5sum="945c73c968c7c980c1acc4bed4a4cc4a" name="detail.phtml" role="magedesign" />
-    <file md5sum="0b4b2a67ac6c05031e15fbf22a7d7c8c" name="list.phtml" role="magedesign" />
+    <file md5sum="7c48df7acfbcfec00a81282d47f47e1b" name="list.phtml" role="magedesign" />
    </dir> <!-- //frontend/base/default/template/faq -->
    <dir name="/modules">
     <file md5sum="b1bc7346cc6d7d269be61274c8a9a2ce" name="Flagbit_Faq.xml" role="mageetc" />
@@ -126,14 +126,14 @@
  <changelog>
   <release>
    <version>
-    <release>1.1.0</release>
-    <api>1.1.0</api>
+    <release>1.1.1</release>
+    <api>1.1.1</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2010-07-09</date>
+   <date>2010-07-19</date>
    <license>OSL 3.0</license>
    <notes>
 * Initial Release
