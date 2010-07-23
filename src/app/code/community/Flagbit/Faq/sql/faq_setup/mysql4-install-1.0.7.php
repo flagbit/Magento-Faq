@@ -18,8 +18,8 @@ CREATE TABLE IF NOT EXISTS {$this->getTable('flagbit_faq/faq')} (
   `question` tinytext NOT NULL default '',
   `answer` text NOT NULL default '',
   `answer_html` tinyint(1) NOT NULL default '1',
-  `creation_time` datetime default NOT NULL,
-  `update_time` datetime default NOT NULL,
+  `creation_time` datetime NOT NULL,
+  `update_time` datetime NOT NULL,
   `is_active` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`faq_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='FAQ items' AUTO_INCREMENT=1 ;
