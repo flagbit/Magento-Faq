@@ -13,11 +13,11 @@
   <email>magento@flagbit.de</email>
   <active>yes</active>
  </lead>
- <date>2010-07-19</date>
- <time>10:57:59</time>
+ <date>2010-10-29</date>
+ <time>09:36:28</time>
  <version>
-  <release>1.1.1</release>
-  <api>1.1.1</api>
+  <release>1.1.2</release>
+  <api>1.1.2</api>
  </version>
  <stability>
   <release>stable</release>
@@ -31,84 +31,87 @@
   <dir name="/">
    <dir name="\de_DE">
     <file md5sum="289b5729e3c29b803705ba524eff0009" name="Flagbit_Faq.csv" role="magelocale" />
-   </dir> <!-- //de_DE -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml">
+   </dir> <!-- /\de_DE -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml">
     <file md5sum="1a52f6775f38f8818a6fc964e41186f9" name="Category.php" role="magecommunity" />
     <file md5sum="e0304bd3c1efe19abc7d01fcbcc5fce7" name="Item.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Category">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Category">
     <file md5sum="82ce255a205607ea3f532bec1b866a2b" name="Edit.php" role="magecommunity" />
     <file md5sum="7da55cff4e9a89a1bbd3ed1e16e09473" name="Grid.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Category -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Category/Edit">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Category -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Category\Edit">
     <file md5sum="fa50256e53f447099c7b4e64e39e070b" name="Form.php" role="magecommunity" />
     <file md5sum="120324ed49a124c903881ab589d0fbec" name="Tabs.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Category/Edit -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Category/Edit/Tab">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Category\Edit -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Category\Edit\Tab">
     <file md5sum="9a0d9491b391fed26000a56df37844d4" name="Main.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Category/Edit/Tab -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Item">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Category\Edit\Tab -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Item">
     <file md5sum="1be3a6857ec6d7c02f2d0ccfcbfaa634" name="Edit.php" role="magecommunity" />
     <file md5sum="cd62342dc77a3d817a65c1e78803f610" name="Grid.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Item -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Item/Edit">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Item -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Item\Edit">
     <file md5sum="e5cdc88c803318d8c98c479c026d6e4c" name="Form.php" role="magecommunity" />
     <file md5sum="d31354fad683a8e5c9fa7ebfd16419c3" name="Tabs.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Item/Edit -->
-   <dir name="/Flagbit/Faq/Block/Adminhtml/Item/Edit/Tab">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Item\Edit -->
+   <dir name="\Flagbit\Faq\Block\Adminhtml\Item\Edit\Tab">
     <file md5sum="32a4d8047f193bc14c3d7d236a57b1eb" name="Main.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Adminhtml/Item/Edit/Tab -->
-   <dir name="/Flagbit/Faq/Block/Frontend">
+   </dir> <!-- /\Flagbit\Faq\Block\Adminhtml\Item\Edit\Tab -->
+   <dir name="\Flagbit\Faq\Block\Frontend">
     <file md5sum="70dcff48e4e49f12adc57a4c98b5543f" name="Detail.php" role="magecommunity" />
     <file md5sum="6569030654c5130ab109a27ff3dea8fb" name="List.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Block/Frontend -->
-   <dir name="/Flagbit/Faq/controllers">
+   </dir> <!-- /\Flagbit\Faq\Block\Frontend -->
+   <dir name="\Flagbit\Faq\controllers">
     <file md5sum="88a6636e20d4e2f442575f708d65af50" name="IndexController.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/controllers -->
-   <dir name="/Flagbit/Faq/controllers/Adminhtml">
+   </dir> <!-- /\Flagbit\Faq\controllers -->
+   <dir name="\Flagbit\Faq\controllers\Adminhtml">
     <file md5sum="12f2d44dd4b8479aa6155711096e7543" name="FaqController.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/controllers/Adminhtml -->
-   <dir name="/Flagbit/Faq/controllers/Adminhtml/Faq">
+   </dir> <!-- /\Flagbit\Faq\controllers\Adminhtml -->
+   <dir name="\Flagbit\Faq\controllers\Adminhtml\Faq">
     <file md5sum="fdeb1cfc69e843ba5501c2918d81de31" name="CategoryController.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/controllers/Adminhtml/Faq -->
-   <dir name="/Flagbit/Faq/etc">
+   </dir> <!-- /\Flagbit\Faq\controllers\Adminhtml\Faq -->
+   <dir name="\Flagbit\Faq\etc">
     <file md5sum="f6fefba5d78694a568dfe6348699197d" name="adminhtml.xml" role="magecommunity" />
-    <file md5sum="08175ff37d4318290c5e897b35d0ecc5" name="config.xml" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/etc -->
-   <dir name="/Flagbit/Faq/Helper">
+    <file md5sum="2e0b759a1afa706e8ada5e029de4f54f" name="config.xml" role="magecommunity" />
+   </dir> <!-- /\Flagbit\Faq\etc -->
+   <dir name="\Flagbit\Faq\Helper">
     <file md5sum="c1f9eec33617fa58cdcfb57f4de76c53" name="Data.php" role="magecommunity" />
     <file md5sum="df7c4f69b3d71e889860cba0d2a75eb4" name="Jumplist.php" role="magecommunity" />
     <file md5sum="73f7308bd6a910bda62423b185deb55c" name="JumplistItem.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Helper -->
-   <dir name="/Flagbit/Faq/Model">
+   </dir> <!-- /\Flagbit\Faq\Helper -->
+   <dir name="\Flagbit\Faq\Model">
     <file md5sum="36182780cfc753fb881bdc1b8349b90e" name="Category.php" role="magecommunity" />
     <file md5sum="8ef029affffadca6a3664a2cc83d41ad" name="Faq.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Model -->
-   <dir name="/Flagbit/Faq/Model/Mysql4">
+   </dir> <!-- /\Flagbit\Faq\Model -->
+   <dir name="\Flagbit\Faq\Model\Mysql4">
     <file md5sum="0025f2040dd67bbc7b0ee05998171269" name="Category.php" role="magecommunity" />
     <file md5sum="02cf076442990202010d70e7de4fbf76" name="Faq.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Model/Mysql4 -->
-   <dir name="/Flagbit/Faq/Model/Mysql4/Category">
+   </dir> <!-- /\Flagbit\Faq\Model\Mysql4 -->
+   <dir name="\Flagbit\Faq\Model\Mysql4\Category">
     <file md5sum="70a3fc72f517a655e1b9b8b6a36daa8c" name="Collection.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Model/Mysql4/Category -->
-   <dir name="/Flagbit/Faq/Model/Mysql4/Faq">
+   </dir> <!-- /\Flagbit\Faq\Model\Mysql4\Category -->
+   <dir name="\Flagbit\Faq\Model\Mysql4\Faq">
     <file md5sum="a3b8ff2ce8a141290cbe0d5028f85d94" name="Collection.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/Model/Mysql4/Faq -->
-   <dir name="/Flagbit/Faq/sql/faq_setup">
+   </dir> <!-- /\Flagbit\Faq\Model\Mysql4\Faq -->
+   <dir name="\Flagbit\Faq\sql\faq_setup">
     <file md5sum="d4c5af45f0067e3c1b0d13bdd9c8c198" name="mysql4-install-0.1.0.php" role="magecommunity" />
-    <file md5sum="181cc1cf55df273114bb2d884d8f7748" name="mysql4-install-1.0.7.php" role="magecommunity" />
+    <file md5sum="4c0f93b4164c83b2638a4c211dd04a96" name="mysql4-install-1.0.7.php" role="magecommunity" />
     <file md5sum="eafa133026178e6536350c343c0d1298" name="mysql4-upgrade-1.0.6-1.0.7.php" role="magecommunity" />
-   </dir> <!-- //Flagbit/Faq/sql/faq_setup -->
-   <dir name="/frontend/base/default/layout">
+   </dir> <!-- /\Flagbit\Faq\sql\faq_setup -->
+   <dir name="\frontend\base\default\layout">
     <file md5sum="270f8e26e5c57313bbb68a0680709018" name="faq.xml" role="magedesign" />
-   </dir> <!-- //frontend/base/default/layout -->
-   <dir name="/frontend/base/default/template/faq">
+   </dir> <!-- /\frontend\base\default\layout -->
+   <dir name="\frontend\base\default\template\faq">
     <file md5sum="945c73c968c7c980c1acc4bed4a4cc4a" name="detail.phtml" role="magedesign" />
     <file md5sum="7c48df7acfbcfec00a81282d47f47e1b" name="list.phtml" role="magedesign" />
-   </dir> <!-- //frontend/base/default/template/faq -->
-   <dir name="/modules">
+   </dir> <!-- /\frontend\base\default\template\faq -->
+   <dir name="\modules">
     <file md5sum="b1bc7346cc6d7d269be61274c8a9a2ce" name="Flagbit_Faq.xml" role="mageetc" />
-   </dir> <!-- //modules -->
+   </dir> <!-- /\modules -->
+   <dir name="\nl_NL">
+    <file md5sum="bf6972e754e13bb9bd622bdcb37123ea" name="Flagbit_Faq.csv" role="magelocale" />
+   </dir> <!-- /\nl_NL -->
   </dir> <!-- / -->
  </contents>
  <dependencies>
@@ -126,14 +129,14 @@
  <changelog>
   <release>
    <version>
-    <release>1.1.1</release>
-    <api>1.1.1</api>
+    <release>1.1.2</release>
+    <api>1.1.2</api>
    </version>
    <stability>
     <release>stable</release>
     <api>stable</api>
    </stability>
-   <date>2010-07-19</date>
+   <date>2010-10-29</date>
    <license>OSL 3.0</license>
    <notes>
 * Initial Release
