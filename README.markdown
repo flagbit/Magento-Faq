@@ -8,16 +8,17 @@ Setup
 
 After installation the FAQ list is availible at http://example.com/your-magento-path/faq. You can add a link to the FAQ module in any static block or page like this: {{store direct_url="faq"}}.
 
-FEATURES
+Features
 --------
 
 * Full format control with HTML (WYSIWYG)
 * Categorizing of FAQ items
 * Every entry can be enabled/disabled individually
 
-FEATURE REQUESTS
+Open Feature Requests
 ----------------
 
 * Sorting of FAQ items within a category
 * Add Meta-Information for FAQ items (like for products)
 
+Contributions are highly appreciated.
