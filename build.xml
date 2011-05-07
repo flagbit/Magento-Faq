@@ -1,71 +1,76 @@
 <project name="Flagbit_Faq" default="deploy" basedir=".">
-	
-	<property file="build.properties"/>
-	<property file="build.default.properties"/>
-	
-	<property name="srcdir" value="${basedir}/src"/>
-	<property name="builddir" value="${basedir}/build"/>
-	<property name="docdir" value="${basedir}/doc"/>
-	
-	<target name="prepare">
-		<replaceregexp file="${srcdir}/app/code/community/Flagbit/Faq/etc/config.xml"
-			match="(&lt;version&gt;)(.*)(&lt;/version&gt;)" replace="\1${package.version}\3"/>
 
-		<tstamp>
-			<format property="package.date" pattern="yyyy-MM-dd"/>
-		</tstamp>
-		<tstamp>
-			<format property="package.time" pattern="HH:mm:ss"/>
-		</tstamp>
-		<replaceregexp file="${basedir}/package.xml"
-			match="(&lt;(date)&gt;).*?(&lt;/\2&gt;)" replace="\1${package.date}\3" />
-		<replaceregexp file="${basedir}/package.xml"
-			match="(&lt;(time)&gt;).*?(&lt;/\2&gt;)" replace="\1${package.time}\3" />
-		
-		<replaceregexp file="${basedir}/package.xml"
-			match="(&lt;version&gt;.*?&lt;(release)&gt;).*?(&lt;/\2&gt;.*?&lt;(api)&gt;).*?(&lt;/\4&gt;.*?&lt;/version&gt;)"
-			replace="\1${package.version}\3${package.version}\5" flags="gs" />
-	</target>
-	
-	<target name="package" depends="prepare" description="Creates a PEAR package">
-		<copy file="${basedir}/package.xml" tofile="${srcdir}/package.xml"/>
-		<exec dir='${srcdir}/' executable="${pear}">
+    <property file="build.properties"/>
+    <property file="build.default.properties"/>
+
+    <property name="srcdir" value="${basedir}/src"/>
+    <property name="builddir" value="${basedir}/build"/>
+    <property name="docdir" value="${basedir}/doc"/>
+
+    <target name="prepare">
+        <replaceregexp file="${srcdir}/app/code/community/Flagbit/Faq/etc/config.xml"
+            match="(&lt;version&gt;)(.*)(&lt;/version&gt;)" replace="\1${package.version}\3"/>
+
+        <tstamp>
+            <format property="package.date" pattern="yyyy-MM-dd"/>
+        </tstamp>
+        <tstamp>
+            <format property="package.time" pattern="HH:mm:ss"/>
+        </tstamp>
+        <replaceregexp file="${basedir}/package.xml"
+            match="(&lt;(date)&gt;).*?(&lt;/\2&gt;)" replace="\1${package.date}\3" />
+        <replaceregexp file="${basedir}/package.xml"
+            match="(&lt;(time)&gt;).*?(&lt;/\2&gt;)" replace="\1${package.time}\3" />
+        
+        <replaceregexp file="${basedir}/package.xml"
+            match="(&lt;version&gt;.*?&lt;(release)&gt;).*?(&lt;/\2&gt;.*?&lt;(api)&gt;).*?(&lt;/\4&gt;.*?&lt;/version&gt;)"
+            replace="\1${package.version}\3${package.version}\5" flags="gs" />
+    </target>
+
+    <target name="package" depends="prepare" description="Creates a PEAR package">
+        <condition property="pear" value="pear.bat">
+            <os family="windows" />
+        </condition>
+        <property name="pear" value="pear" />
+
+        <copy file="${basedir}/package.xml" tofile="${srcdir}/package.xml"/>
+        <exec dir='${srcdir}/' executable="${pear}">
             <arg value="mpx"/>
         </exec>
-		<copy file="${srcdir}/package.xml" tofile="${basedir}/package.xml"/>
-		<exec dir="${srcdir}" executable="${pear}">
-			<arg value="mage-package"/>
-		</exec>
-		<delete file="${srcdir}/package.xml"/>
-		<move file="${srcdir}/${ant.project.name}-${package.version}.tgz" todir="${builddir}"/>
-	</target>
-	
-	<target name="deploy" depends="prepare">
-		<copy todir="${deploydir}" overwrite="yes" verbose="yes">
-			<fileset dir="${srcdir}">
-				<include name="**/*"/>
-				<exclude name="**/.svn/**"/>
-				<exclude name="var/log/**"/>
-			</fileset>
-		</copy>
-	</target>
-	
-	<target name="phpdoc" description="Generates the documentation">
-		<delete dir="${docdir}" />
-		<exec executable="${php}" dir="${srcdir}/app">
-			<arg value="${phpdoc}" />
-			<arg value="-ct" />
-			<arg value="override" />
-			<arg value="-f" />
-			<arg value="*.php" />
-			<arg value="-t" />
-			<arg value="${docdir}" />
-			<arg value="-ti" />
-			<arg value="${ant.project.name}" />
-			<arg value="-s" />
-			<arg value="-o" />
-			<arg value="${phpdoc.output}" />
-		</exec>
-	</target>
-	
+
+        <copy file="${srcdir}/package.xml" tofile="${basedir}/package.xml"/>
+        <exec dir="${srcdir}" executable="${pear}">
+            <arg value="mage-package"/>
+        </exec>
+        <delete file="${srcdir}/package.xml"/>
+        <move file="${srcdir}/${ant.project.name}-${package.version}.tgz" todir="${builddir}"/>
+    </target>
+
+    <target name="deploy" depends="prepare">
+        <copy todir="${deploydir}" overwrite="yes" verbose="yes">
+            <fileset dir="${srcdir}">
+                <include name="**/*"/>
+                <exclude name="**/.svn/**"/>
+                <exclude name="var/log/**"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="phpdoc" description="Generates the documentation">
+        <delete dir="${docdir}" />
+        <exec executable="${php}" dir="${srcdir}/app">
+            <arg value="${phpdoc}" />
+            <arg value="-ct" />
+            <arg value="override" />
+            <arg value="-f" />
+            <arg value="*.php" />
+            <arg value="-t" />
+            <arg value="${docdir}" />
+            <arg value="-ti" />
+            <arg value="${ant.project.name}" />
+            <arg value="-s" />
+            <arg value="-o" />
+            <arg value="${phpdoc.output}" />
+        </exec>
+    </target>
 </project>
