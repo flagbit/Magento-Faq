@@ -13,11 +13,11 @@
   <email>magento@flagbit.de</email>
   <active>yes</active>
  </lead>
- <date>2010-10-29</date>
- <time>09:36:28</time>
+ <date>2011-05-07</date>
+ <time>18:36:37</time>
  <version>
-  <release>1.1.2</release>
-  <api>1.1.2</api>
+  <release>1.1.3</release>
+  <api>1.1.3</api>
  </version>
  <stability>
   <release>stable</release>
@@ -129,8 +129,8 @@
  <changelog>
   <release>
    <version>
-    <release>1.1.2</release>
-    <api>1.1.2</api>
+    <release>1.1.3</release>
+    <api>1.1.3</api>
    </version>
    <stability>
     <release>stable</release>
