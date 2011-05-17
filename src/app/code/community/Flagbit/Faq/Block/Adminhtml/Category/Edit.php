@@ -43,17 +43,23 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit extends Mage_Adminhtml_Block_Wid
     }
     
     /**
-     * Helper function to edit the header of the current form
-     *
-     * @return string Returns an "edit" or "new" text depending on the type of modifications.
+     * @return Flagbit_Faq_Model_Category
+     */
+    public function getCategory()
+    {
+        return Mage::registry('faq_category');
+    }
+    
+    /**
+     * @return string
      */
     public function getHeaderText()
     {
-        if (Mage::registry('faq_category')->getFaqId()) {
-            return Mage::helper('flagbit_faq')->__("Edit FAQ Category '%s'", $this->htmlEscape(Mage::registry('faq_category')->getCategoryName()));
+        if ($this->getCategory()->getId()) {
+            return $this->escapeHtml($this->getCategory()->getCategoryName());
         }
         else {
-            return Mage::helper('flagbit_faq')->__('New FAQ Category');
+            return $this->escapeHtml(Mage::helper('flagbit_faq')->__('New FAQ Category'));
         }
     }
     
