@@ -58,26 +58,30 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
     public function editAction()
     {
         $id = $this->getRequest()->getParam('category_id');
-        $model = Mage::getModel('flagbit_faq/category');
+        $category = Mage::getModel('flagbit_faq/category');
         
         // if current id given -> try to load and edit current FAQ category
         if ($id) {
-            $model->load($id);
-            if (!$model->getId()) {
+            $category->load($id);
+            if (!$category->getId()) {
                 Mage::getSingleton('adminhtml/session')->addError(
                     Mage::helper('flagbit_faq')->__('This FAQ category no longer exists')
                 );
                 $this->_redirect('*/*/');
                 return;
             }
+            $this->_title($category->getName());
+        }
+        else {
+            $this->_title('New Category');
         }
         
         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
         if (!empty($data)) {
-            $model->setData($data);
+            $category->setData($data);
         }
         
-        Mage::register('faq_category', $model);
+        Mage::register('faq_category', $category);
         
         $this->_initAction()
                 ->_addBreadcrumb(
@@ -107,13 +111,13 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
         if ($data = $this->getRequest()->getPost()) {
             
             // init model and set data
-            $model = Mage::getModel('flagbit_faq/category');
-            $model->setData($data);
+            $category = Mage::getModel('flagbit_faq/category');
+            $category->setData($data);
             
             // try to save it
             try {
                 // save the data
-                $model->save();
+                $category->save();
                 
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(
@@ -124,7 +128,7 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
                 // check if 'Save and Continue'
                 if ($this->getRequest()->getParam('back')) {
                     $this->_redirect('*/*/edit', array (
-                            'category_id' => $model->getId() ));
+                            'category_id' => $category->getId() ));
                     return;
                 }
             }
@@ -151,9 +155,9 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
         if ($id = $this->getRequest()->getParam('category_id')) {
             try {
                 // init model and delete
-                $model = Mage::getModel('flagbit_faq/category');
-                $model->load($id);
-                $model->delete();
+                $category = Mage::getModel('flagbit_faq/category');
+                $category->load($id);
+                $category->delete();
                 
                 // display success message
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('flagbit_faq')->__('FAQ Category was successfully deleted'));
