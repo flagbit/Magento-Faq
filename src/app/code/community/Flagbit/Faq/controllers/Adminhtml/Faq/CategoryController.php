@@ -26,9 +26,12 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
         $this->_usedModuleName = 'flagbit_faq';
         
         $this->loadLayout()
-                ->_setActiveMenu('cms/faq')
-                ->_addBreadcrumb($this->__('CMS'), $this->__('CMS'))
-                ->_addBreadcrumb($this->__('FAQ'), $this->__('FAQ'));
+            ->_setActiveMenu('cms/faq')
+            ->_addBreadcrumb($this->__('CMS'), $this->__('CMS'))
+            ->_addBreadcrumb($this->__('FAQ'), $this->__('FAQ'));
+        
+        $this->_title('FAQ');
+        $this->_title('Manage Categories');
         
         return $this;
     }
@@ -40,8 +43,8 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
     public function indexAction()
     {
         $this->_initAction()
-                ->_addContent($this->getLayout()->createBlock('flagbit_faq/adminhtml_category'))
-                ->renderLayout();
+            ->_addContent($this->getLayout()->createBlock('flagbit_faq/adminhtml_category'))
+            ->renderLayout();
     }
     
     /**
@@ -70,10 +73,6 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
                 $this->_redirect('*/*/');
                 return;
             }
-            $this->_title($category->getName());
-        }
-        else {
-            $this->_title('New Category');
         }
         
         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
@@ -98,6 +97,13 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
                                 ->setData('action', $this->getUrl('*/*/save'))
                 )
                 ->_addLeft($this->getLayout()->createBlock('flagbit_faq/adminhtml_category_edit_tabs'));
+        
+        if ($category->getId()) {
+            $this->_title($category->getName());
+        }
+        else {
+            $this->_title('New Category');
+        }
         
         $this->renderLayout();
     }
