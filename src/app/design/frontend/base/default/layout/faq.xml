@@ -26,6 +26,16 @@
  */
 -->
 <layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="flagbit_faq">
+                <label>FAQ</label>
+                <url helper="flagbit_faq/getFaqIndexUrl" />
+                <title>FAQ</title>
+            </action>
+        </reference>
+    </default>
+    
     <faq_index_index>
         <reference name="content">
             <block type="flagbit_faq/frontend_list" name="faq_list" template="faq/list.phtml"/>
