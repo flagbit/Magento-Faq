@@ -53,3 +53,7 @@
 "Total %d records found","Всего %s записей найдено"
 "View","Вид"
 "Yes","Да"
+"Frequently Asked Questions", "Часто задаваемые вопросы"
+"Unable to find a FAQ entry to delete", "Не могу найти элемент FAQ для удаления"
+"This FAQ category no longer exists", "Эта категория FAQ больше не существует"
+"FAQ Category was successfully saved", "Категория FAQ успешно сохранена"
