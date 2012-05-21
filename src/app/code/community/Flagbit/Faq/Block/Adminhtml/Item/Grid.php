@@ -57,6 +57,10 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
                 'type' => 'text', 
                 'index' => 'faq_id' ));
         
+        $this->addColumn('question', array (
+                'header' => Mage::helper('flagbit_faq')->__('Question'), 
+                'index' => 'question' ));
+        
         if (!Mage::app()->isSingleStoreMode()) {
             $this->addColumn('store_id', 
                     array (
@@ -70,10 +74,6 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
                                     $this, 
                                     '_filterStoreCondition' ) ));
         }
-        
-        $this->addColumn('question', array (
-                'header' => Mage::helper('flagbit_faq')->__('Question'), 
-                'index' => 'question' ));
         
         $this->addColumn('is_active', 
                 array (
