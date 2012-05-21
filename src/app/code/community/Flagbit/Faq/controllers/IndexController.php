@@ -65,6 +65,8 @@ class Flagbit_Faq_IndexController extends Mage_Core_Controller_Front_Action
 			{
 				$this->_forward('defaultNoRoute');
 			}
+
+			return;
 		}
 
 		$faq->setPopularity($faq->getPopularity() + 1)
