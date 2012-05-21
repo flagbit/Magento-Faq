@@ -129,6 +129,20 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 		return count($this->getFaqJumplist()) > 0;
 	}
 	
+	public function getPopularQuestions($limit = 10, $page = 1)
+	{
+		$collection = Mage::getModel('flagbit_faq/faq')
+			->getCollection()
+			->setPageSize($limit)
+			->setCurPage($page);
+
+		// Order by popularity. For more information on why this is necessary 
+		// instead of setOrder() or addAttributeToSort() see http://goo.gl/Jeq3h
+		$collection->getSelect()->order("popularity DESC");
+
+		return $collection;
+	}
+
 	public function encodeQuestionForUrl($question)
 	{
 		return 	urlencode(

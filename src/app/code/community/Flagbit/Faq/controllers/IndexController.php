@@ -31,4 +31,43 @@ class Flagbit_Faq_IndexController extends Mage_Core_Controller_Front_Action
 	{
 		$this->loadLayout()->renderLayout();
 	}
+
+	/**
+	 * Logs a hit to a particular question and increases said question's 
+	 * popularity. This allows you to show popular questions on the FAQ index 
+	 * page.
+	 *
+	 * The idea is that when question titles are clicked on to show the answer 
+	 * we send an AJAX request to this URL, increasing the question's popularity
+	 * (therefore this is only for accordian-style questions).
+	 *
+	 * [!!] Note: this call must be made over AJAX.
+	 *
+	 * @param  int  Question ID to modify
+	 * @return void
+	 */
+	public function hitAction()
+	{
+		$id  = $this->getRequest()->getParam('id');
+		$faq = Mage::getModel('flagbit_faq/faq')->load( (int) $id);
+
+		// If this isn't an AJAX call disregard: this URL should not be 
+		// crawlable. Also ensure we have a question ID.
+		if ( ! $this->getRequest()->isXmlHttpRequest() || $id == '' || ! $faq->getId())
+		{
+			$this->getResponse()->setHeader('HTTP/1.1', '404 Not Found');
+			$this->getResponse()->setHeader('Status', '404 File Not Found');
+
+			// Try and render the CMS 404 page; if we can't show the default no 
+			// route.
+			$pageId = Mage::getStoreConfig(Mage_Cms_Helper_Page::XML_PATH_NO_ROUTE_PAGE);
+			if ( ! Mage::Helper('cms/page')->renderPage($this, $pageId))
+			{
+				$this->_forward('defaultNoRoute');
+			}
+		}
+
+		$faq->setPopularity($faq->getPopularity() + 1)
+		    ->save();
+	}
 }
