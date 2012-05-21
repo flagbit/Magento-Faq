@@ -69,7 +69,8 @@ class Flagbit_Faq_IndexController extends Mage_Core_Controller_Front_Action
 			return;
 		}
 
-		$faq->setPopularity($faq->getPopularity() + 1)
-		    ->save();
+		$table = Mage::getSingleton('core/resource')->getTableName('faq');
+		$db    = Mage::getSingleton('core/resource')->getConnection('core/write');
+		$db->query("UPDATE `$table` SET `popularity` = `popularity` + 1 WHERE `faq_id` = :id", array(":id" => (int) $id));
 	}
 }
