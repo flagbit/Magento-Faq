@@ -57,7 +57,7 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 	public function getCategoryCollection()
 	{
 	    $categories = $this->getData('category_collection');
-	    if (is_null($categories)) {
+	    if (!is_null($categories)) {
     	    $categories =  Mage::getResourceSingleton('flagbit_faq/category_collection')
     	       ->addStoreFilter(Mage::app()->getStore())
     	       ->addIsActiveFilter();
