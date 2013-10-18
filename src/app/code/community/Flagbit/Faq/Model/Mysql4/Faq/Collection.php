@@ -77,23 +77,25 @@ class Flagbit_Faq_Model_Mysql4_Faq_Collection extends Mage_Core_Model_Mysql4_Col
     public function addStoreFilter($store)
     {
         if ($store instanceof Mage_Core_Model_Store) {
-            $store = array (
-                 $store->getId()
-            );
+            $store = array((int) $store->getId());
         }
-        
-        $this->getSelect()->join(
-            array('store_table' => $this->getTable('flagbit_faq/faq_store')),
-            'main_table.faq_id = store_table.faq_id',
-            array ()
-        )->where('store_table.store_id in (?)', array (
-            0, 
-            $store
-        ))->group('main_table.faq_id');
-        
+
+        $fromParts = $this->getSelect()->getPart('from');
+
+        if (!isset($fromParts['store_table'])) {
+            $this->join(
+                array('store_table' => $this->getTable('flagbit_faq/faq_store')),
+                'main_table.faq_id = store_table.faq_id'
+            );
+
+            $this->getSelect()
+                ->where('store_table.store_id in (?)', array(0, $store))
+                ->group('main_table.faq_id')
+            ;
+        }
+
         return $this;
     }
-
     
     /**
      * After load processing - adds store information to the datasets
