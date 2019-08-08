@@ -21,7 +21,9 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 	protected function _prepareLayout()
     {
         if ($head = $this->getLayout()->getBlock('head')) {
-            $head->setTitle($this->htmlEscape($this->__('Frequently Asked Questions')) . ' - ' . $head->getTitle());
+            $currentTitle = $head->getTitle();
+            $currentTitle = str_ireplace(Mage::getStoreConfig('design/head/title_suffix'), '', $currentTitle);
+            $head->setTitle($this->htmlEscape($this->__('Frequently Asked Questions')) . ' - ' . $currentTitle);
         }
     }
 	
