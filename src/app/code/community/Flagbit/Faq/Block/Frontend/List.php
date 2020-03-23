@@ -129,6 +129,28 @@ class Flagbit_Faq_Block_Frontend_List extends Mage_Core_Block_Template
 		return count($this->getFaqJumplist()) > 0;
 	}
 	
+	/**
+	 * Lists our FAQ items (individual questions) by popularity. This allows you 
+	 * to show the most popular questions on the FAQ index page.
+	 *
+	 * @var  int  Number of items to show per page (SQL LIMIT).
+	 * @var  int  Number of the page to display, paired with $limit
+	 * @return Flagbit_Faq_Model_Mysql_Faq_Collection collection of current FAQ entries
+	 */
+	public function getPopularQuestions($limit = 10, $page = 1)
+	{
+		$collection = Mage::getModel('flagbit_faq/faq')
+			->getCollection()
+			->setPageSize($limit)
+			->setCurPage($page);
+
+		// Order by popularity. For more information on why this is necessary 
+		// instead of setOrder() or addAttributeToSort() see http://goo.gl/Jeq3h
+		$collection->getSelect()->order("popularity DESC");
+
+		return $collection;
+	}
+
 	public function encodeQuestionForUrl($question)
 	{
 		return 	urlencode(
