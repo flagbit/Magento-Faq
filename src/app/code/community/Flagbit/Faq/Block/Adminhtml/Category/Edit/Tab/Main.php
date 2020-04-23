@@ -44,7 +44,19 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
             'title' => Mage::helper('flagbit_faq')->__('Category Name'), 
             'required' => true,
         ));
-        
+
+        $fieldset->addField('category_icon', 'select', array (
+            'name' => 'category_icon',
+            'label' => Mage::helper('flagbit_faq')->__('Category icon'),
+            'title' => Mage::helper('flagbit_faq')->__('Category icon'),
+            'values'    => array(
+                'PICTO_COMMANDES.svg' => 'PICTO_COMMANDES.svg name',
+                'PICTO_COMPTE CLIENT.svg'   => 'PICTO_COMPTE CLIENT.svg name'
+            ),
+            'required' => false,
+        ));
+
+
         /**
          * Check is single store mode
          */
