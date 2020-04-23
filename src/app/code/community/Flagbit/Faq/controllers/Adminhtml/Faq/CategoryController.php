@@ -122,6 +122,40 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
             
             // try to save it
             try {
+
+                if (isset($postData['image']) && $postData['image'] != '') {
+                //if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
+                        $uploader = new Varien_File_Uploader('image');
+                        $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png','svg'));
+                        $uploader->setAllowRenameFiles(false);
+                        $uploader->setFilesDispersion(false);
+
+                        // Set media as the upload dir
+                        $media_path  = Mage::getBaseDir('media');
+
+                        $filename = $media_path . Flagbit_Faq_Helper_Data::MEDIA_PATH . $postData['image'];
+
+                        while (file_exists($filename)) {
+                            $pieces = array();
+
+                            $res = preg_match('/^(.+)_(\d+)$/', $filename, $pieces);
+
+                            if (!$res) {
+                                $filename .= '_1';
+                            } else {
+                                $filename .= '_' . strval(intval($pieces[2]) + 1);
+                            }
+                        }
+
+                        // Upload the image
+                        $uploader->save($media_path . Flagbit_Faq_Helper_Data::MEDIA_PATH, $postData['image']);
+
+                } else {
+                    if(isset($postData['image']['delete']) && $postData['image']['delete'] == 1) {
+                        $imgFilename = NULL;
+                    }
+                }
+
                 // save the data
                 $category->save();
                 

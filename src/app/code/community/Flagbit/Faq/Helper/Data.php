@@ -16,6 +16,8 @@
  */
 class Flagbit_Faq_Helper_Data extends Mage_Core_Helper_Abstract
 {
+
+    const MEDIA_PATH = 'Flagbit/FAQ/';
     /**
      * Returns config data
      * 

@@ -25,7 +25,7 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
     {
         $model = Mage::registry('faq_category');
         
-        $form = new Varien_Data_Form();
+        $form = new Varien_Data_Form(array('enctype' => 'multipart/form-data'));
         $form->setHtmlIdPrefix('faq_');
         
         $fieldset = $form->addFieldset('base_fieldset', array (
@@ -45,17 +45,11 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
             'required' => true,
         ));
 
-        $fieldset->addField('category_icon', 'select', array (
-            'name' => 'category_icon',
-            'label' => Mage::helper('flagbit_faq')->__('Category icon'),
-            'title' => Mage::helper('flagbit_faq')->__('Category icon'),
-            'values'    => array(
-                'PICTO_COMMANDES.svg' => 'PICTO_COMMANDES.svg name',
-                'PICTO_COMPTE CLIENT.svg'   => 'PICTO_COMPTE CLIENT.svg name'
-            ),
-            'required' => false,
+        $fieldset->addField('image', 'file', array(
+            'label'     => Mage::helper('news')->__('Icon'),
+            'required'  => false,
+            'name'      => 'image',
         ));
-
 
         /**
          * Check is single store mode
