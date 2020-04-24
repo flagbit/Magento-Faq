@@ -37,7 +37,7 @@ class Flagbit_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wid
      */
     protected function _prepareCollection()
     {
-        $collection = Mage::getResourceModel('flagbit_faq/category_collection');
+        $collection = Mage::getResourceModel('flagbit_faq/category_collection')->setOrder('position','ASC');
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }
@@ -54,7 +54,24 @@ class Flagbit_Faq_Block_Adminhtml_Category_Grid extends Mage_Adminhtml_Block_Wid
                 'width' => '80px', 
                 'type' => 'text', 
                 'index' => 'category_id' ));
-        
+
+        $this->addColumn('position', array (
+            'header' => Mage::helper('flagbit_faq')->__('position'),
+            'width' => '20px',
+            'type' => 'text',
+            'index' => 'position' ));
+
+        $this->addColumn(
+            'icon',
+            array(
+                'header' => Mage::helper('flagbit_faq')->__('Icon'),
+                'index' => 'icon',
+                'width' => '50px',
+                'renderer' => 'Flagbit_Faq_Block_Widget_Grid_Column_Renderer_Media',
+                'filter' => false
+            )
+        );
+
         $this->addColumn(
             'category_name',
             array(

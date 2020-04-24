@@ -79,7 +79,7 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
         if (!empty($data)) {
             $category->setData($data);
         }
-        
+
         Mage::register('faq_category', $category);
         
         $this->_initAction()
@@ -123,9 +123,8 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
             // try to save it
             try {
 
-                if (isset($postData['image']) && $postData['image'] != '') {
-                //if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
-                        $uploader = new Varien_File_Uploader('image');
+                if(isset($_FILES['icon']['name']) && (file_exists($_FILES['icon']['tmp_name']))) {
+                        $uploader = new Varien_File_Uploader('icon');
                         $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png','svg'));
                         $uploader->setAllowRenameFiles(false);
                         $uploader->setFilesDispersion(false);
@@ -133,26 +132,20 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
                         // Set media as the upload dir
                         $media_path  = Mage::getBaseDir('media');
 
-                        $filename = $media_path . Flagbit_Faq_Helper_Data::MEDIA_PATH . $postData['image'];
-
-                        while (file_exists($filename)) {
-                            $pieces = array();
-
-                            $res = preg_match('/^(.+)_(\d+)$/', $filename, $pieces);
-
-                            if (!$res) {
-                                $filename .= '_1';
-                            } else {
-                                $filename .= '_' . strval(intval($pieces[2]) + 1);
-                            }
-                        }
+                        $filename = $data['category_name'] . '.' . pathinfo($_FILES['icon']['name'],PATHINFO_EXTENSION);
 
                         // Upload the image
-                        $uploader->save($media_path . Flagbit_Faq_Helper_Data::MEDIA_PATH, $postData['image']);
+                        $r = $uploader->save($media_path . DS . Flagbit_Faq_Helper_Data::MEDIA_PATH, $filename);
+                        $filename = $r['file'];
 
+                        $category->setIcon( Flagbit_Faq_Helper_Data::MEDIA_PATH . $filename);
                 } else {
-                    if(isset($postData['image']['delete']) && $postData['image']['delete'] == 1) {
-                        $imgFilename = NULL;
+                    if(isset($postData['icon']['delete']) && $postData['icon']['delete'] == 1) {
+                        $category->setIcon(NULL);
+                    }
+                    else{
+                        $data['icon'] = $data['icon']['value'];
+                        $category->setIcon($data['icon']);
                     }
                 }
 

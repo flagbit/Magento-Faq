@@ -29,6 +29,11 @@ class Flagbit_Faq_Model_Category extends Mage_Core_Model_Abstract
         return $this->getCategoryName();
     }
     
+    public function getIconUrl()
+    {
+        return Mage::getBaseUrl('media').$this->getData('icon');
+    }
+    
     public function getItemCollection()
     {
         $collection = $this->getData('item_collection');
