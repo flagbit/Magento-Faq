@@ -24,8 +24,7 @@ class Flagbit_Faq_Model_Mysql4_Faq_Collection extends Mage_Core_Model_Mysql4_Col
      */
     protected function _construct()
     {
-        $this->_init('flagbit_faq/faq')
-            ->setOrder('question', 'ASC');
+        $this->_init('flagbit_faq/faq');
     }
     
     /**

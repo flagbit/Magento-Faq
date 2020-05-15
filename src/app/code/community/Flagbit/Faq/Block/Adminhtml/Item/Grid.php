@@ -41,7 +41,7 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
     protected function _prepareCollection()
     {
         //TODO: add full name logic
-        $collection = Mage::getResourceModel('flagbit_faq/faq_collection')->setOrder('position','ASC');;
+        $collection = Mage::getResourceModel('flagbit_faq/faq_collection');
         $this->setCollection($collection);
         #Mage::Log($collection->getData());
         return parent::_prepareCollection();
