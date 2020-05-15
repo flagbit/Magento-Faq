@@ -16,6 +16,9 @@
  */
 class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
+
+    private $_categories = null;
+
     /**
      * Constructor of Grid
      *
@@ -44,6 +47,19 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
         return parent::_prepareCollection();
     }
 
+    protected function getCategories()
+    {
+        if (!$this->_categories){
+            $this->_categories = array();
+            $collection = Mage::getResourceModel('flagbit_faq/category_collection')->setOrder('category_name','ASC');
+            /** @var Flagbit_Faq_Model_Category $category */
+            foreach ($collection as $category){
+                $this->_categories[$category->getId()] = $category->getCategoryName();
+            }
+        }
+        return $this->_categories;
+    }
+
     /**
      * Preparation of the requested columns of the grid
      *
@@ -62,7 +78,20 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
             'width' => '20px',
             'type' => 'text',
             'index' => 'position' ));
-        
+
+
+        $this->addColumn('categories',
+            array(
+                'header' => Mage::helper('flagbit_faq')->__('Categories'),
+                'index' => 'category',
+                'width' => '250px',
+                'type' => 'options',
+                'renderer' => 'Flagbit_Faq_Block_Adminhtml_Renderer_Categories',
+                'options' => $this->getCategories(),
+                'filter_condition_callback'
+                => array($this, '_filterCategoriesCondition'),
+            ));
+
         $this->addColumn('question', array (
                 'header' => Mage::helper('flagbit_faq')->__('Question'), 
                 'index' => 'question' ));
@@ -119,6 +148,22 @@ class Flagbit_Faq_Block_Adminhtml_Item_Grid extends Mage_Adminhtml_Block_Widget_
     {
         $this->getCollection()->walk('afterLoad');
         parent::_afterLoadCollection();
+    }
+
+    protected function _filterCategoriesCondition($collection, $column)
+    {
+        if (!$value = $column->getFilter()->getValue()) {
+            return;
+        }
+
+        $this->getCollection()
+            ->getSelect()
+            ->join(
+                array('cat_item'=>'faq_category_item'),
+                'main_table.faq_id = cat_item.faq_id',
+                array('cat_item.category_id')
+            )
+            ->where('cat_item.category_id = '.$value);
     }
 
     /**

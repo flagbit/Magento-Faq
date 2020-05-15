@@ -1,4 +1,5 @@
 src/app/code/community/Flagbit/Faq  app/code/community/Flagbit/Faq
+src/app/design/adminhtml/default/default/layout/faq.xml app/design/adminhtml/default/default/layout/faq.xml
 src/app/design/frontend/base/default/layout/faq.xml app/design/frontend/base/default/layout/faq.xml
 src/app/design/frontend/base/default/template/faq app/design/frontend/base/default/template/faq
 src/app/etc/modules/Flagbit_Faq.xml app/etc/modules/Flagbit_Faq.xml

@@ -120,6 +120,13 @@
 				</Flagbit_Faq>
 			</modules>
 		</translate>
+		<layout>
+			<updates>
+				<faq>
+					<file>faq.xml</file>
+				</faq>
+			</updates>
+		</layout>
 	</adminhtml>
 	<install>
 		<translate>
