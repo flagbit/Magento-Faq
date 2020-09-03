@@ -2,8 +2,6 @@
 $installer = $this;
 $installer->startSetup();
 
-$table = $this->getTable('plopcom_slider/slide');
-
 $path = Mage::getBaseDir('media') . DS . 'Flagbit' . DS . 'FAQ';
 
 function mkdir_r($dirName, $rights=0777){
