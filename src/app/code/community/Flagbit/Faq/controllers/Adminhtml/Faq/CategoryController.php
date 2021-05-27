@@ -132,7 +132,7 @@ class Flagbit_Faq_Adminhtml_Faq_CategoryController extends Mage_Adminhtml_Contro
                         // Set media as the upload dir
                         $media_path  = Mage::getBaseDir('media');
 
-                        $filename = $data['category_name'] . '.' . pathinfo($_FILES['icon']['name'],PATHINFO_EXTENSION);
+                        $filename = Mage::helper('flagbit_faq')->createSlug($data['category_name']) . implode('-',$data['stores']) . '.' . pathinfo($_FILES['icon']['name'],PATHINFO_EXTENSION);
 
                         // Upload the image
                         $r = $uploader->save($media_path . DS . Flagbit_Faq_Helper_Data::MEDIA_PATH, $filename);
