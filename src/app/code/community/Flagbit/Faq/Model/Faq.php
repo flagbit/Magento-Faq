@@ -23,4 +23,9 @@ class Flagbit_Faq_Model_Faq extends Mage_Core_Model_Abstract
     {
         $this->_init('flagbit_faq/faq');
     }
+
+    public function getAnswer() {
+        $data = $this->getData('answer');
+        return Mage::helper('cms')->getPageTemplateProcessor()->filter($data);
+    }
 }

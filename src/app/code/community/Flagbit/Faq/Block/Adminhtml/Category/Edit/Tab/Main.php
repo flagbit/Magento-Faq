@@ -25,7 +25,7 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
     {
         $model = Mage::registry('faq_category');
         
-        $form = new Varien_Data_Form();
+        $form = new Varien_Data_Form(array('enctype' => 'multipart/form-data'));
         $form->setHtmlIdPrefix('faq_');
         
         $fieldset = $form->addFieldset('base_fieldset', array (
@@ -44,7 +44,13 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
             'title' => Mage::helper('flagbit_faq')->__('Category Name'), 
             'required' => true,
         ));
-        
+
+        $fieldset->addField('icon', 'image', array(
+            'label'     => Mage::helper('flagbit_faq')->__('Icon'),
+            'required'  => false,
+            'name'      => 'icon',
+        ));
+
         /**
          * Check is single store mode
          */
@@ -63,6 +69,13 @@ class Flagbit_Faq_Block_Adminhtml_Category_Edit_Tab_Main extends Mage_Adminhtml_
                     'value' => Mage::app()->getStore(true)->getId() ));
             $model->setStoreId(Mage::app()->getStore(true)->getId());
         }
+
+        $fieldset->addField('position', 'text',
+            array (
+                'label' => Mage::helper('flagbit_faq')->__('position'),
+                'title' => Mage::helper('flagbit_faq')->__('position'),
+                'name' => 'position',
+                'required' => true));
         
         $fieldset->addField('is_active', 'select', 
                 array (

@@ -77,7 +77,14 @@ class Flagbit_Faq_Block_Adminhtml_Item_Edit_Tab_Main extends Mage_Adminhtml_Bloc
                     'value' => Mage::app()->getStore(true)->getId() ));
             $model->setStoreId(Mage::app()->getStore(true)->getId());
         }
-        
+
+        $fieldset->addField('position', 'text',
+            array (
+                'label' => Mage::helper('flagbit_faq')->__('position'),
+                'title' => Mage::helper('flagbit_faq')->__('position'),
+                'name' => 'position',
+                'required' => true));
+
         $fieldset->addField('is_active', 'select', 
                 array (
                         'label' => Mage::helper('cms')->__('Status'), 

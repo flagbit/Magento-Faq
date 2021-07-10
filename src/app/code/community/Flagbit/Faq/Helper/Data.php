@@ -16,6 +16,8 @@
  */
 class Flagbit_Faq_Helper_Data extends Mage_Core_Helper_Abstract
 {
+
+    const MEDIA_PATH = 'wysiwyg/Flagbit/FAQ/';
     /**
      * Returns config data
      * 
@@ -38,4 +40,9 @@ class Flagbit_Faq_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return $this->_getUrl('faq');
     }
+
+    public function createSlug($urlString){
+       return preg_replace('/[^A-Za-z0-9-]+/', '-', $urlString);
+    }
+
 }
